@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta & Social Share Preview Tags -->
+    <title>CineVoice Deep AI - Voice to Aesthetic Video Studio</title>
+    <meta name="description" content="Transform your voice, uploaded audio, or shayari into a cinematic 9:16 vertical aesthetic video instantly with studio bass boost, reverb, and your own photos as background. Built for creators and shayars.">
+    <meta name="keywords" content="CineVoice Deep AI, shayari reel maker, voice to video, aesthetic reels, web audio dsp, voice studio">
+    
+    <!-- Open Graph Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CineVoice Deep AI - Voice to Cinematic Video">
+    <meta property="og:description" content="Record your voice or upload audio files, apply studio deep voice effects, and generate stunning aesthetic videos instantly in your browser!">
+    <meta property="og:image" content="https://picsum.photos/seed/cinevoice-preview/1200/630">
+    <meta property="og:url" content="https://cinevoicedeepai.com">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎙️</text></svg>">
+
+    <!-- Google Analytics 4 -->
+    <script>
+      window.CINEVOICE_GA_ID = 'G-92R28M3R3W';
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+      window.cinevoiceTrack = function(eventName, eventParams) {
+        if (typeof window.gtag === 'function' && window.CINEVOICE_GA_ID !== 'G-XXXXXXXXXX') {
+          window.gtag('event', eventName, eventParams || {});
+        }
+      };
+
+      if (/^G-[A-Z0-9]+$/.test(window.CINEVOICE_GA_ID) &&
+          window.CINEVOICE_GA_ID !== 'G-XXXXXXXXXX') {
+        var gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(window.CINEVOICE_GA_ID);
+        document.head.appendChild(gaScript);
+        window.gtag('js', new Date());
+        window.gtag('config', window.CINEVOICE_GA_ID, { send_page_view: true });
+      }
+    </script>
+
+    <!-- Google AdSense Auto Ads -->
+    <script>
+      window.CINEVOICE_ADSENSE_ID = 'ca-pub-XXXXXXXXXXXXXXXX';
+      if (/^ca-pub-\d{10,20}$/.test(window.CINEVOICE_ADSENSE_ID)) {
+        var adScript = document.createElement('script');
+        adScript.async = true;
+        adScript.crossOrigin = 'anonymous';
+        adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + window.CINEVOICE_ADSENSE_ID;
+        document.head.appendChild(adScript);
+      }
+    </script>
+
+    <!-- No Reload / No Refresh Guard -->
+    <script>
+      window.__cvBusy = false;
+      document.addEventListener('submit', function(e){ e.preventDefault(); }, true);
+      window.addEventListener('beforeunload', function(e){
+        if (window.__cvBusy) { e.preventDefault(); e.returnValue = ''; return ''; }
+      });
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('button:not([type])').forEach(function(b){ b.setAttribute('type','button'); });
+        document.querySelectorAll('a[href="#"]').forEach(function(a){
+          a.addEventListener('click', function(e){ e.preventDefault(); });
+        });
+      });
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .glow-effect { box-shadow: 0 0 25px -5px rgba(124, 58, 237, 0.4); }
+        .glow-effect:hover { box-shadow: 0 0 35px 0px rgba(139, 92, 246, 0.6); }
+        
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-ring-anim { animation: pulse-ring 2s infinite ease-in-out; }
+
+        body.soft { background: #fff1f5; color: #4a1d35; }
+        body.soft .glass-panel { background: rgba(255,255,255,.82); border-color: rgba(190,24,93,.15); }
+        body.soft .bg-slate-950, body.soft .bg-slate-900, body.soft .bg-slate-800 { background: #ffe4ec!important; color: #4a1d35; }
+        body.soft .bg-slate-900\/80 { background: rgba(255,255,255,.7)!important; }
+        body.soft [class*="text-slate-"], body.soft .text-white { color: #5b2742!important; }
+        body.soft [class*="border-slate-"] { border-color: #f9a8d4!important; }
+        body.soft input, body.soft select, body.soft textarea { color: #4a1d35!important; }
+        .chip { padding: .5rem .75rem; border-radius: .6rem; font-size: .75rem; background: #1e293b; color: inherit; border: 1px solid transparent; transition: all 0.2s; }
+        .chip:hover, .chip.on { border-color: #f472b6; background: #334155; }
+        body.soft .chip { background: #ffe4ec; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-violet-600 selection:text-white">
+
+    <!-- Background Ambient Glows -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-violet-900/30 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 bg-indigo-900/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-purple-900/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="relative z-10 border-b border-slate-800/80 glass-panel sticky top-0">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" id="brand-logo" onclick="app.resetToHome()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-violet-500/30">
+                    <i class="fa-solid font-bold fa-compact-disc text-lg animate-spin" style="animation-duration: 8s;"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-violet-400">CineVoice Deep AI</span>
+                    <span class="hidden sm:inline-block text-xs bg-violet-950 text-violet-300 font-medium px-2 py-0.5 rounded-full ml-2 border border-violet-800/50">Voice Studio</span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3 text-xs sm:text-sm text-slate-400">
+                <span id="streak-badge" class="chip">🔥 0 day streak</span>
+                <button type="button" class="chip" onclick="document.body.classList.toggle('soft')">🌸 Soft / Dark</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 flex flex-col justify-center">
+
+        <!-- ================= STEP 1: INPUT CREATION FORM ================= -->
+        <section id="input-section" class="w-full">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+                    Voice to <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-300 to-indigo-400">Cinematic Deep Video</span>
+                </h1>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Record your mic voice, upload an audio/video file, or pick a trending line. Studio DSP effects apply locally inside your browser!
+                </p>
+            </div>
+
+            <!-- DAILY CONTENT + QUICK TEMPLATES -->
+            <div class="glass-panel rounded-2xl p-4 sm:p-5 mb-5 border border-violet-900/40">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-violet-400 font-semibold">Daily creator corner</p>
+                        <h2 class="text-lg font-bold text-white">Aaj kya create karein?</h2>
+                    </div>
+                    <button type="button" onclick="app.showDailyShayari()" class="text-xs px-3 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white">New daily line</button>
+                </div>
+                <p id="daily-shayari-text" class="text-sm sm:text-base text-slate-200 leading-relaxed mb-3">"Khamoshi bhi kabhi kabhi sabse gehri awaaz hoti hai."</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button type="button" onclick="app.useDailyShayari()" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-white">Use this line</button>
+                    <button type="button" onclick="app.copyDailyShayari()" class="px-3 py-2 rounded-lg border border-slate-700 hover:border-violet-500 text-xs text-slate-200">Copy line</button>
+                </div>
+
+            </div>
+
+            <!-- CREATOR GUIDE & TIPS -->
+            <div id="guides" class="glass-panel rounded-2xl p-4 sm:p-6 mb-6 border border-violet-900/30 space-y-3">
+                <div class="flex items-center justify-between cursor-pointer" onclick="document.getElementById('creator-guide-content').classList.toggle('hidden')">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open-reader text-violet-400 text-lg"></i>
+                        <h2 class="text-sm font-bold text-white uppercase tracking-wider">💡 Creator Guide / क्रिएटर गाइड</h2>
+                    </div>
+                    <span class="text-xs text-violet-400 font-medium underline">Click to Read / Hide</span>
+                </div>
+
+                <div id="creator-guide-content" class="hidden space-y-4 pt-3 border-t border-slate-800 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <div class="flex gap-2">
+                        <button type="button" id="guide-tab-hi" onclick="guideLang('hi')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-violet-600 text-white">🇮🇳 हिंदी</button>
+                        <button type="button" id="guide-tab-en" onclick="guideLang('en')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300">🇬🇧 English</button>
+                    </div>
+                    <div id="guide-hi" class="space-y-4" lang="hi">
+                        <p class="text-[11px] text-slate-400">किसी भी विषय पर टैप करके पढ़ें।</p>
+                        <div class="space-y-2">
+                            <p class="font-bold text-violet-300 text-sm">🎬 1. वीडियो एडिटिंग और टिप्स</p>
+                            <details class="group p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+                                <summary class="cursor-pointer font-semibold text-slate-100 list-none flex items-center justify-between gap-2"><span>इंस्टाग्राम रील्स के लिए वीडियो कैसे एडिट करें?</span><i class="fa-solid fa-chevron-down text-violet-400 text-[10px]"></i></summary>
+                                <div class="mt-2 text-slate-300 text-[12px] sm:text-[13px] leading-relaxed space-y-2"><p>रील हमेशा 9:16 (वर्टिकल) में होनी चाहिए, और CineVoice Deep AI का वीडियो पहले से इसी साइज़ में बनता है। पहले 3 सेकंड में दर्शक का ध्यान पकड़ें, छोटे और साफ़ टेक्स्ट रखें, और 1 से 59 सेकंड के भीतर अपनी बात पूरी करें। आवाज़ साफ़ हो तो रील ज़्यादा देखी जाती है। इस टूल में बैकग्राउंड नॉइज़ क्लीनिंग हमेशा अपने आप चालू रहती है।</p></div>
+                            </details>
+                            <details class="group p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+                                <summary class="cursor-pointer font-semibold text-slate-100 list-none flex items-center justify-between gap-2"><span>यूट्यूब शॉर्ट्स बनाने का सबसे आसान तरीका</span><i class="fa-solid fa-chevron-down text-violet-400 text-[10px]"></i></summary>
+                                <div class="mt-2 text-slate-300 text-[12px] sm:text-[13px] leading-relaxed space-y-2"><p>शॉर्ट्स भी वर्टिकल वीडियो ही हैं। अपनी आवाज़ या शायरी रिकॉर्ड करें, या किसी वीडियो की आवाज़ निकालें, थीम चुनें और वीडियो जनरेट करके डाउनलोड करें, फिर YouTube ऐप में Shorts के रूप में अपलोड कर दें।</p></div>
+                            </details>
+                        </div>
+                    </div>
+                    <div id="guide-en" class="space-y-4 hidden" lang="en">
+                        <p class="text-[11px] text-slate-400">Tap any topic to read it.</p>
+                        <div class="space-y-2">
+                            <p class="font-bold text-violet-300 text-sm">🎬 1. Video Editing & Tips</p>
+                            <details class="group p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+                                <summary class="cursor-pointer font-semibold text-slate-100 list-none flex items-center justify-between gap-2"><span>How to make videos from 1 to 59 seconds?</span><i class="fa-solid fa-chevron-down text-violet-400 text-[10px]"></i></summary>
+                                <div class="mt-2 text-slate-300 text-[12px] sm:text-[13px] leading-relaxed space-y-2"><p>Reels and Shorts should be 9:16 vertical, matching your exact voice duration from 1 second up to 59 seconds.</p></div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function guideLang(l) {
+                    ['hi','en'].forEach(function(k) {
+                        document.getElementById('guide-' + k).classList.toggle('hidden', k !== l);
+                        var t = document.getElementById('guide-tab-' + k);
+                        t.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold ' + (k === l ? 'bg-violet-600 text-white' : 'bg-slate-800 text-slate-300');
+                    });
+                }
+            </script>
+
+            <!-- VOICE MODE: Feature Voice vs Real Voice -->
+            <div id="voice-mode-panel" class="glass-panel rounded-2xl p-4 sm:p-6 mb-6 border border-violet-900/40 space-y-3">
+              <p class="text-xs font-semibold">🎚️ Voice Mode chunein</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button type="button" id="mode-feature" onclick="ext.setVoiceMode('feature')" class="text-left p-3 rounded-xl border bg-violet-600 text-white border-violet-500 transition-colors">
+                  <span class="block text-sm font-semibold">✨ Feature Voice</span>
+                  <span class="block text-[11px] opacity-90 mt-1">Studio / deep awaaz: bass, pitch aur reverb lagte hain. Neeche ke sliders se control karein.</span>
+                </button>
+                <button type="button" id="mode-real" onclick="ext.setVoiceMode('real')" class="text-left p-3 rounded-xl border bg-slate-900 text-slate-300 border-slate-700 transition-colors">
+                  <span class="block text-sm font-semibold">🎙️ Real Voice</span>
+                  <span class="block text-[11px] opacity-90 mt-1">Aapki original awaaz jaisi hai waisi. Koi effect nahi, sirf peeche ka noise saaf.</span>
+                </button>
+              </div>
+              <p class="text-[11px] text-emerald-300">🧹 Dono modes me background noise cleaning hamesha ON rehti hai.</p>
+              <label class="flex items-start gap-2 text-xs p-3 rounded-xl bg-slate-900/60 border border-slate-800 cursor-pointer">
+                <input type="checkbox" id="ai-denoise" class="mt-0.5" checked onchange="ext.setAI(this.checked)">
+                <span><b>🤖 AI Noise Remover (beta) — ON (Up to 59s)</b><br><span class="text-[11px] text-slate-400">Bolte samay saath aane wali peeche ki awaaz (pankha, bartan, gaadi) hatakar sirf aapki awaaz rakhta hai.</span></span>
+              </label>
+              <p id="ai-note" class="text-[11px] text-amber-300 hidden"></p>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-4 sm:p-6 mb-6 border border-slate-800 space-y-4">
+              <div id="fx-voice-style">
+                <p class="text-xs font-semibold mb-2">🎙️ Voice style</p>
+                <div class="flex flex-wrap gap-2" id="voice-styles">
+                  <button type="button" class="chip" onclick="ext.voiceStyle('sweet',this)">🌸 Soft &amp; Sweet</button>
+                  <button type="button" class="chip" onclick="ext.voiceStyle('rj',this)">📻 Radio RJ</button>
+                  <button type="button" class="chip" onclick="ext.voiceStyle('whisper',this)">🌙 Whisper</button>
+                  <button type="button" class="chip" onclick="ext.voiceStyle('deep',this)">🎧 Deep</button>
+                </div>
+              </div>
+              <div>
+                <p class="text-xs font-semibold mb-2">🎉 Occasion lines</p>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" class="chip" onclick="ext.occasion('morning')">☀️ Good morning</button>
+                  <button type="button" class="chip" onclick="ext.occasion('night')">🌙 Good night</button>
+                  <button type="button" class="chip" onclick="ext.occasion('selflove')">💖 Self-love</button>
+                  <button type="button" class="chip" onclick="ext.occasion('friend')">👯 Friendship</button>
+                  <button type="button" class="chip" onclick="ext.occasion('birthday')">🎂 Birthday</button>
+                  <button type="button" class="chip" onclick="ext.occasion('wedding')">💍 Wedding</button>
+                  <button type="button" class="chip" onclick="ext.occasion('bhaidooj')">🪔 Bhai Dooj / Rakhi</button>
+                </div>
+              </div>
+
+              <!-- ENHANCED LINE HELPER SECTION -->
+              <div class="pt-2 border-t border-slate-800">
+                <div class="flex items-center justify-between mb-2">
+                    <p class="text-xs font-semibold">✍️ Line Helper: Quick keyword select karein ya word likhein</p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-3" id="quick-keyword-chips">
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('birthday')">🎂 birthday</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('trending')">🔥 trending</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('love')">❤️ love</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('intezaar')">⏳ intezaar</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('dost')">👯 dost</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('maa')">❤️ maa</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('sapne')">✨ sapne</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('khamoshi')">🌙 khamoshi</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('yaadein')">🌧️ yaadein</button>
+                    <button type="button" class="chip text-[11px] py-1 px-2.5 bg-violet-950/60 border-violet-800/40 hover:bg-violet-900" onclick="ext.quickKeyword('dil')">💖 dil</button>
+                </div>
+
+                <div class="flex gap-2 mb-2">
+                    <input id="poem-word" type="text" placeholder="Word type karein (e.g. birthday, trending, intezaar, dost)" class="flex-1 bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs focus:ring-1 focus:ring-violet-500">
+                    <button type="button" class="chip bg-violet-600 hover:bg-violet-500 text-white font-medium px-4" onclick="ext.poems()">Suggest</button>
+                    <button type="button" class="chip bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-3" title="New Random Lines" onclick="ext.poems(true)">🔄 Refresh</button>
+                </div>
+
+                <div id="poem-out" class="mt-3 space-y-2"></div>
+              </div>
+
+              <div class="pt-2">
+                <p class="text-xs text-emerald-300">🧹 Background noise clean: <b>Always ON</b> <input type="checkbox" id="clean-on" checked class="hidden" aria-hidden="true"></p>
+              </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-4 sm:p-6 shadow-2xl border border-slate-800">
+                <!-- VOICE RECORDING & FILE UPLOAD INTERFACE (3 METHODS) -->
+                <div id="voice-recording-area" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- METHOD 1: MIC RECORDING (1-59s) -->
+                        <div class="flex flex-col items-center justify-center p-5 border-2 border-dashed border-slate-800 rounded-xl bg-slate-900/50 hover:border-slate-700 transition-all text-center">
+                            <div id="mic-status-ring" class="relative mb-3">
+                                <div id="mic-pulse" class="hidden absolute inset-0 rounded-full bg-violet-600/40 pulse-ring-anim"></div>
+                                <button id="record-btn" onclick="app.toggleRecording()" 
+                                        class="relative z-10 w-14 h-14 rounded-full bg-gradient-to-tr from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white flex items-center justify-center text-lg shadow-lg transition-transform active:scale-95">
+                                    <i id="record-icon" class="fa-solid fa-microphone"></i>
+                                </button>
+                            </div>
+                            <h3 id="record-status" class="text-sm font-medium text-slate-200">Tap to Start Mic Record</h3>
+                            <p id="record-timer" class="text-xs font-mono text-violet-400 mt-1">00:00 / 00:59</p>
+                            <span class="mt-2 text-[10px] text-slate-400">1s se 59s tak flexible</span>
+                        </div>
+
+                        <!-- METHOD 2: LOCAL AUDIO FILE UPLOAD -->
+                        <div class="flex flex-col items-center justify-center p-5 border-2 border-dashed border-slate-800 rounded-xl bg-slate-900/50 hover:border-violet-600/50 transition-all text-center relative group">
+                            <input type="file" id="local-audio-file" accept="audio/*" onchange="app.handleFileUpload(event)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
+                            <div class="w-14 h-14 rounded-full bg-slate-800 group-hover:bg-violet-900/40 text-violet-400 flex items-center justify-center text-lg mb-3 border border-slate-700 group-hover:border-violet-500 transition-all">
+                                <i class="fa-solid fa-file-audio"></i>
+                            </div>
+                            <h3 class="text-sm font-medium text-slate-200">Upload Device Audio</h3>
+                            <p class="text-xs text-slate-400 mt-1">MP3, WAV, M4A, Voice Notes</p>
+                            <span class="mt-2 text-[10px] text-emerald-400 font-medium px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-800/50">🔒 100% Local Processing</span>
+                        </div>
+
+                        <!-- METHOD 3: UPLOAD VIDEO TO EXTRACT VOICE -->
+                        <div class="flex flex-col items-center justify-center p-5 border-2 border-dashed border-slate-800 rounded-xl bg-slate-900/50 hover:border-indigo-500/60 transition-all text-center relative group">
+                            <input type="file" id="local-video-voice-file" accept="video/*" onchange="app.handleVideoVoiceUpload(event)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
+                            <div class="w-14 h-14 rounded-full bg-slate-800 group-hover:bg-indigo-900/40 text-indigo-400 flex items-center justify-center text-lg mb-3 border border-slate-700 group-hover:border-indigo-500 transition-all">
+                                <i class="fa-solid fa-film"></i>
+                            </div>
+                            <h3 class="text-sm font-medium text-slate-200">Upload Video (Voice nikalne ke liye)</h3>
+                            <p class="text-xs text-slate-400 mt-1">Shayari / Dialogue video se awaaz lein</p>
+                            <span class="mt-2 text-[10px] text-amber-300 font-medium px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/50">Max 60MB • Browser Audio Extract</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-2 text-[11px]">
+                        <div class="flex-1 p-3 rounded-xl bg-amber-950/30 border border-amber-800/40 text-amber-200 leading-relaxed">
+                            🎧 <b>Gaana / music ke saath record na karein.</b> Earphone lagakar ya shaanti me apni awaaz record karein.
+                        </div>
+                        <div class="flex-1 p-3 rounded-xl bg-indigo-950/30 border border-indigo-800/40 text-indigo-200 leading-relaxed">
+                            ⚖️ <b>Voice Extraction Note:</b> Kisi video ki awaaz istemal karte waqt sirf usi content ka upyog karein jiska adhikar ya permission aapke paas ho.
+                        </div>
+                    </div>
+
+                    <!-- Audio Clipping / Duration Info Banner -->
+                    <div id="duration-notice-banner" class="hidden p-3 rounded-xl bg-violet-950/50 border border-violet-700/50 text-xs text-violet-200 flex items-center justify-between">
+                        <span id="duration-notice-text"></span>
+                        <span class="font-mono text-[11px] bg-violet-900 px-2 py-0.5 rounded text-white" id="detected-audio-len">0s</span>
+                    </div>
+
+                    <!-- Voice Keywords & Emotion Theme Selection -->
+                    <div class="grid grid-cols-1 gap-4">
+                        <div>
+                            <label for="voice-tags" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                                Caption Text / Shayari (sirf caption me jayega, video me nahi)
+                            </label>
+                            <input type="text" id="voice-tags" placeholder="e.g. rain, lonely night, stars, mountain"
+                                   class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-violet-500">
+                        </div>
+                    </div>
+
+                    <!-- BACKGROUND PHOTOS / VIDEOS (user device) -->
+                    <div id="media-box" class="p-4 bg-slate-900/80 border border-violet-700/50 rounded-xl space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span class="text-xs font-semibold text-violet-300">📸 Background Photos / Videos (zaroori)</span>
+                            <span id="media-count-badge" class="text-[10px] text-amber-300 bg-amber-950/70 border border-amber-800/50 px-2 py-0.5 rounded">0 added</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Photo 3 second dikhti hai. Video apni poori length tak jaisa hai waisa (as it is) chalta hai. Sab ek ke baad ek aate hain aur awaaz (1s se 59s) khatam hone tak wapas pehle se repeat (loop) hote hain. Max 20 files.</p>
+                        <div id="media-thumbs" class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 pt-1"></div>
+                        <div class="flex items-center gap-2 pt-1">
+                            <label class="cursor-pointer px-3 py-2 rounded-lg bg-slate-800 hover:bg-violet-700 text-xs font-medium text-white border border-slate-700 hover:border-violet-500 transition-colors flex items-center gap-1.5">
+                                <i class="fa-solid fa-images text-violet-300"></i>
+                                <span>Select Photos / Videos</span>
+                                <input type="file" id="custom-bg-media" accept="image/*,video/*" multiple onchange="app.handleCustomMediaUpload(event)" class="hidden">
+                            </label>
+                            <button type="button" id="clear-custom-media-btn" onclick="app.clearCustomMedia()" class="hidden px-2.5 py-2 rounded-lg bg-rose-950/70 hover:bg-rose-900 text-rose-300 border border-rose-800/50 text-xs" title="Sab hatayein">
+                                <i class="fa-solid fa-xmark"></i> Clear all
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Voice Audio Preview Container -->
+                    <div id="voice-preview-container" class="hidden glass-panel p-4 rounded-xl bg-slate-900/80 border border-violet-900/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="audio-source-label" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Audio Preview</span>
+                            <button onclick="app.clearVoiceRecording()" class="text-xs text-rose-400 hover:text-rose-300">
+                                <i class="fa-solid fa-trash mr-1"></i> Clear &amp; Re-select
+                            </button>
+                        </div>
+                        <audio id="audio-preview-element" controls class="w-full h-10 rounded-lg"></audio>
+                    </div>
+                </div>
+
+                <!-- Deep Voice Audio DSP Controls -->
+                <div class="mt-6 pt-6 border-t border-slate-800">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-violet-400 uppercase tracking-wider flex items-center">
+                            <i class="fa-solid fa-sliders mr-1.5"></i> Awaaz Settings (Voice Tuning)
+                        </span>
+                        <span class="text-[11px] text-slate-500">Confused? Neeche se apni situation chuno</span>
+                    </div>
+
+                    <div class="mb-3" id="fx-situation">
+                      <p class="text-[11px] mb-2">🎯 Aap kya bana rahe ho? Best settings ek tap me lag jayengi:</p>
+                      <div class="flex flex-wrap gap-2" id="situation-chips">
+                        <button type="button" class="chip" onclick="ext.situation('shayari',this)">😔 Shayari / Sad</button>
+                        <button type="button" class="chip" onclick="ext.situation('love',this)">❤️ Love / Romantic</button>
+                        <button type="button" class="chip" onclick="ext.situation('motivation',this)">🏔️ Motivation</button>
+                        <button type="button" class="chip" onclick="ext.situation('morning',this)">☀️ Good morning</button>
+                        <button type="button" class="chip" onclick="ext.situation('sleep',this)">🌙 Good night / ASMR</button>
+                        <button type="button" class="chip" onclick="ext.situation('wish',this)">🎂 Birthday / Wishes</button>
+                        <button type="button" class="chip" onclick="ext.situation('rj',this)">📻 RJ / Podcast</button>
+                      </div>
+                      <p id="situation-note" class="text-[11px] text-violet-300 mt-2"></p>
+                    </div>
+
+                    <div id="fx-sliders" class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                        <div>
+                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                                <span>Bass / Gehrai</span>
+                                <span id="val-bass">+4 dB</span>
+                            </div>
+                            <input type="range" id="slider-bass" min="0" max="10" value="4" step="1" 
+                                   oninput="document.getElementById('val-bass').innerText = '+' + this.value + ' dB'"
+                                   class="w-full accent-violet-500 h-1 bg-slate-800 rounded-lg cursor-pointer">
+                            <p id="hint-bass" class="text-[11px] text-violet-300 mt-1"></p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                                <span>Pitch</span>
+                                <span id="val-pitch">-6%</span>
+                            </div>
+                            <input type="range" id="slider-pitch" min="-12" max="12" value="6" step="1" 
+                                   oninput="document.getElementById('val-pitch').innerText = (0<this.value?'-':'+') + Math.abs(this.value) + '%'"
+                                   class="w-full accent-violet-500 h-1 bg-slate-800 rounded-lg cursor-pointer">
+                            <p id="hint-pitch" class="text-[11px] text-violet-300 mt-1"></p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                                <span>Reverb / Gunj</span>
+                                <span id="val-reverb">30%</span>
+                            </div>
+                            <input type="range" id="slider-reverb" min="0" max="70" value="30" step="5" 
+                                   oninput="document.getElementById('val-reverb').innerText = this.value + '%'"
+                                   class="w-full accent-violet-500 h-1 bg-slate-800 rounded-lg cursor-pointer">
+                            <p id="hint-reverb" class="text-[11px] text-violet-300 mt-1"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Duration & Trigger Options -->
+                <div class="mt-6 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+                        <span class="flex items-center"><i class="fa-regular fa-clock mr-1.5 text-violet-400"></i> Length: 1s to 59s (Auto-Match Voice)</span>
+                        <span class="flex items-center"><i class="fa-solid fa-mobile-screen-button mr-1.5 text-violet-400"></i> 9:16 Vertical Video</span>
+                    </div>
+
+                    <!-- Submit Trigger Button -->
+                    <button id="generate-btn" onclick="app.startVideoGeneration()" 
+                            class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold rounded-xl shadow-lg shadow-violet-600/30 flex items-center justify-center gap-2 transform active:scale-95 transition-all glow-effect">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Generate Cinematic Deep Video</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STEP 2: PROCESSING SCREEN ================= -->
+        <section id="processing-section" class="hidden w-full max-w-2xl mx-auto py-6">
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-violet-900/40 text-center space-y-6 shadow-2xl">
+                <div class="relative w-24 h-24 mx-auto flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full border-4 border-slate-800"></div>
+                    <div class="absolute inset-0 rounded-full border-4 border-violet-500 border-t-transparent animate-spin"></div>
+                    <i class="fa-solid fa-sliders text-violet-400 text-2xl"></i>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-1">Synthesizing Deep Voice Video</h2>
+                    <p id="processing-status-text" class="text-sm text-violet-300 font-mono animate-pulse">Preparing audio &amp; photos...</p>
+                    <div id="detected-badge" class="mt-2 inline-block px-3 py-1 rounded-full text-xs font-semibold bg-violet-900/60 border border-violet-700/50 text-violet-300">
+                        Background: <span id="detected-mood-tag">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- Real-Time Rendering Screen Warning -->
+                <div class="p-3 rounded-xl bg-amber-950/50 border border-amber-700/50 text-xs text-amber-200 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-mobile-screen text-amber-400"></i>
+                    <span><b>Kripya screen khuli rakhein:</b> Video real-time me record ho raha hai (jitne second ki awaaz hai utna samay lagega). Tab band na karein.</span>
+                </div>
+
+                <div class="w-full bg-slate-900 rounded-full h-3 border border-slate-800 overflow-hidden">
+                    <div id="progress-bar-fill" class="bg-gradient-to-r from-violet-600 via-indigo-500 to-purple-500 h-full w-0 transition-all duration-300 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-left text-xs text-slate-400 pt-2 border-t border-slate-800/80">
+                    <div id="step-1" class="p-2 rounded bg-slate-900/40 border border-slate-800/50 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-notch animate-spin text-violet-400"></i> Prepare Media
+                    </div>
+                    <div id="step-2" class="p-2 rounded bg-slate-900/40 border border-slate-800/50 flex items-center gap-1.5 opacity-40">
+                        <i class="fa-regular fa-circle text-slate-500"></i> DSP Deep Voice
+                    </div>
+                    <div id="step-3" class="p-2 rounded bg-slate-900/40 border border-slate-800/50 flex items-center gap-1.5 opacity-40">
+                        <i class="fa-regular fa-circle text-slate-500"></i> Photo Stitching
+                    </div>
+                    <div id="step-4" class="p-2 rounded bg-slate-900/40 border border-slate-800/50 flex items-center gap-1.5 opacity-40">
+                        <i class="fa-regular fa-circle text-slate-500"></i> Stream Encode
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STEP 3: OUTPUT DISPLAY SECTION ================= -->
+        <section id="output-section" class="hidden w-full max-w-2xl mx-auto">
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6 shadow-2xl">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> Deep Video Compiled!
+                        </h2>
+                        <p id="export-format-text" class="text-xs text-slate-400 mt-0.5">Your 9:16 vertical video (720×1280) is ready.</p>
+                    </div>
+                    <button onclick="app.resetToHome()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition-colors">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> New Video
+                    </button>
+                </div>
+
+                <div class="relative mx-auto max-w-[320px] rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-800 bg-slate-950 aspect-[9/16]">
+                    <video id="final-video-player" controls class="w-full h-full object-cover"></video>
+                </div>
+
+                <div class="rounded-xl border border-violet-900/40 bg-slate-900/70 p-4 space-y-3">
+                    <div>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-violet-400">Ready to share</p>
+                        <p class="text-sm text-slate-300 mt-1">Share your video directly, or download it and post it as a Reel / Short.</p>
+                    </div>
+                    <textarea id="share-caption" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-200" placeholder="Your caption and hashtags will appear here..."></textarea>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" onclick="app.copyCaption()" class="px-3 py-2 rounded-lg border border-slate-700 hover:border-violet-500 text-xs">Copy caption + hashtags</button>
+                        <button type="button" onclick="app.shareVideo()" class="px-3 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-xs text-white">Share video</button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button type="button" onclick="ext.saveImage()" class="py-3.5 px-6 rounded-xl text-sm border border-slate-700">🖼️ Save as wallpaper (PNG)</button>
+                    <button id="download-btn" onclick="app.downloadVideo()" 
+                            class="flex-1 py-3.5 px-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold rounded-xl shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-solid fa-download text-lg"></i>
+                        <span id="download-label">Download Video</span>
+                    </button>
+                    <button onclick="app.resetToHome()" 
+                            class="py-3.5 px-6 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Create Another</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Canvas Renderer (720x1280 9:16 vertical) -->
+        <canvas id="render-canvas" width="720" height="1280" class="hidden"></canvas>
+    </main>
+
+    <!-- PRO FOOTER & LEGAL MODAL SYSTEM -->
+    <footer class="relative z-10 border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-md py-8 text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-800/60">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-shield-halved text-emerald-400 text-base"></i>
+                    <span class="text-slate-300 font-medium">100% Client-Side Stateless Processing — Privacy First Engine</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-6 text-slate-300 font-medium">
+                    <button type="button" onclick="openPolicyModal('privacy')" class="hover:text-violet-400 transition-colors">Privacy Policy</button>
+                    <button type="button" onclick="openPolicyModal('about')" class="hover:text-violet-400 transition-colors">About Us</button>
+                    <button type="button" onclick="openPolicyModal('contact')" class="hover:text-violet-400 transition-colors">Contact Us</button>
+                    <button type="button" onclick="openPolicyModal('terms')" class="hover:text-violet-400 transition-colors">Terms and Conditions</button>
+                    <button type="button" onclick="openPolicyModal('disclaimer')" class="hover:text-violet-400 transition-colors">Disclaimer</button>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-2">
+                <p>© 2026 CineVoice Deep AI. WebAudio DSP &amp; Canvas Stream Engine.</p>
+                <p>Designed for Creators, Shayars &amp; Reel Makers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- POLICY & LEGAL MODAL OVERLAY -->
+    <div id="legal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-3xl rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+            <button type="button" onclick="closePolicyModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content-container" class="space-y-4 text-slate-200"></div>
+        </div>
+    </div>
+
+    <!-- ================= RUNTIME APPLICATION ENGINE ================= -->
+    <script>
+        const legalModalContent = {
+            privacy: `
+                <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-emerald-400"></i> Privacy Policy (गोपनीयता नीति)</h3>
+                <div class="space-y-4 text-sm leading-relaxed text-slate-300">
+                    <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 space-y-2">
+                        <p class="font-semibold text-white">🇬🇧 English</p>
+                        <p><b>Your voice &amp; media:</b> Recording, video audio extraction, noise cleaning, custom image/video processing and video creation happen inside your browser. We do not upload or store your files on our server.</p>
+                    </div>
+                </div>
+            `,
+            about: `
+                <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-circle-info text-violet-400"></i> About Us (हमारे बारे में)</h3>
+                <div class="space-y-4 text-sm leading-relaxed text-slate-300">
+                    <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800">
+                        <p>Welcome to CineVoice Deep AI! We are an AI-powered voice-to-video automation platform dedicated to making 9:16 vertical video creation fast, easy, and creative for everyone.</p>
+                    </div>
+                </div>
+            `,
+            contact: `
+                <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-envelope text-indigo-400"></i> Contact Us (संपर्क करें)</h3>
+                <div class="space-y-4 text-sm leading-relaxed text-slate-300">
+                    <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 space-y-2">
+                        <p>Email: <span class="text-violet-300 font-mono">contactcinevoicedeepai@gmail.com</span></p>
+                    </div>
+                </div>
+            `,
+            terms: `
+                <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-file-contract text-amber-400"></i> Terms and Conditions (नियम और शर्तें)</h3>
+                <div class="space-y-4 text-sm leading-relaxed text-slate-300">
+                    <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 space-y-2">
+                        <p><b>Usage Policy:</b> Users must only upload or extract audio/video content they own or have legal rights to use.</p>
+                    </div>
+                </div>
+            `,
+            disclaimer: `
+                <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-rose-400"></i> Disclaimer (अस्वीकरण)</h3>
+                <div class="space-y-4 text-sm leading-relaxed text-slate-300">
+                    <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 space-y-3">
+                        <p>CineVoice Deep AI is an automated client-side utility tool. Users hold full responsibility for the media and audio they process.</p>
+                    </div>
+                </div>
+            `
+        };
+
+        function openPolicyModal(type) {
+            const container = document.getElementById('modal-content-container');
+            if (container && legalModalContent[type]) {
+                container.innerHTML = legalModalContent[type];
+                document.getElementById('legal-modal').classList.remove('hidden');
+            }
+        }
+
+        function closePolicyModal() {
+            document.getElementById('legal-modal').classList.add('hidden');
+        }
+
+        class CineVoiceDeepApp {
+            constructor() {
+                this.mediaRecorder = null;
+                this.audioChunks = [];
+                this.recordedAudioBlob = null;
+                this.recordedAudioUrl = null;
+                this.isRecording = false;
+                this.recordTimerInterval = null;
+                this.recordSeconds = 0;
+                this.maxRecordSeconds = 59;
+                this.detectedAudioDuration = 0;
+
+                this.speechRecognition = null;
+                this.transcribedText = "";
+                this.initSpeechRecognition();
+
+                this.canvas = document.getElementById('render-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.generatedVideoBlob = null;
+                this.generatedVideoUrl = null;
+                this.canvasAnimationFrame = null;
+
+                this.audioCtx = null;
+                this.analyser = null;
+                this.dataArray = null;
+
+                this.customMediaItems = [];
+
+                this.dailyLines = [
+                    "Khamoshi bhi kabhi kabhi sabse gehri awaaz hoti hai.",
+                    "Manzil unhi ko milti hai jo safar se dosti karte hain.",
+                    "Kuch yaadein baarish ki tarah hoti hain, aati hain aur sab bhigo jaati hain.",
+                    "Apni pehchaan khud banao, duniya naam yaad rakhegi.",
+                    "Raat jitni gehri ho, subah utni hi kareeb hoti hai."
+                ];
+                this.dailyLineIndex = new Date().getDate() % this.dailyLines.length;
+                this.showDailyShayari();
+            }
+
+            initSpeechRecognition() {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (SpeechRecognition) {
+                    this.speechRecognition = new SpeechRecognition();
+                    this.speechRecognition.continuous = true;
+                    this.speechRecognition.interimResults = true;
+                    this.speechRecognition.onresult = (event) => {
+                        let transcript = '';
+                        for (let i = event.resultIndex; i < event.results.length; i++) {
+                            transcript += event.results[i][0].transcript;
+                        }
+                        this.transcribedText = transcript;
+                        const tagInput = document.getElementById('voice-tags');
+                        if (tagInput && transcript.trim()) {
+                            tagInput.value = transcript.trim();
+                        }
+                    };
+                }
+            }
+
+            showDailyShayari() {
+                const el = document.getElementById('daily-shayari-text');
+                if (!el) return;
+                this.dailyLineIndex = (this.dailyLineIndex + 1) % this.dailyLines.length;
+                el.textContent = '"' + this.dailyLines[this.dailyLineIndex] + '"';
+            }
+
+            useDailyShayari() {
+                const el = document.getElementById('daily-shayari-text');
+                const input = document.getElementById('voice-tags');
+                if (el && input) {
+                    input.value = el.textContent.replace(/^"|"$/g, '');
+                }
+                document.getElementById('voice-recording-area')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            async copyDailyShayari() {
+                const el = document.getElementById('daily-shayari-text');
+                if (!el) return;
+                try {
+                    await navigator.clipboard.writeText(el.textContent.replace(/^"|"$/g, ''));
+                    alert('Shayari copied!');
+                } catch (e) { alert('Copy text manually.'); }
+            }
+
+            buildShareCaption(text) {
+                return (text || 'My new cinematic creation').trim() + '\n\nMade with CineVoice Deep AI ✨\n#CineVoice #Shayari #Reels #Shorts';
+            }
+
+            async copyCaption() {
+                const caption = document.getElementById('share-caption')?.value || '';
+                try { await navigator.clipboard.writeText(caption); alert('Caption copied!'); } catch (e) {}
+            }
+
+            async shareVideo() {
+                if (!this.generatedVideoBlob) return alert('Generate a video first.');
+                const file = new File([this.generatedVideoBlob], 'cinevoice-video.' + (this.videoExt || 'webm'), { type: (this.generatedVideoBlob.type || '').split(';')[0] || ('video/' + (this.videoExt || 'webm')) });
+                if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+                    try { await navigator.share({ files: [file], title: 'CineVoice video', text: document.getElementById('share-caption')?.value || '' }); } catch (e) {}
+                } else { alert('Direct sharing not supported. Download and post manually.'); }
+            }
+
+            inspectAudioDuration(url) {
+                const banner = document.getElementById('duration-notice-banner');
+                const textEl = document.getElementById('duration-notice-text');
+                const lenEl = document.getElementById('detected-audio-len');
+                const tempAudio = new Audio(url);
+                tempAudio.addEventListener('loadedmetadata', () => {
+                    let dur = tempAudio.duration;
+                    if (!isFinite(dur) || isNaN(dur)) return;
+                    this.detectedAudioDuration = dur;
+                    if (banner && textEl && lenEl) {
+                        banner.classList.remove('hidden');
+                        if (dur > 59) {
+                            textEl.innerHTML = `✂️ <b>Audio 59s se lambi hai (${Math.round(dur)}s):</b> Pehle 59 seconds hi video me use honge.`;
+                            lenEl.textContent = '59s (Clipped)';
+                        } else {
+                            const finalDur = Math.max(1, Math.round(dur));
+                            textEl.innerHTML = `⏱️ <b>Exact Voice Length Match:</b> Video ${finalDur} second ka banega.`;
+                            lenEl.textContent = finalDur + 's';
+                        }
+                    }
+                });
+            }
+
+            handleFileUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                if (this.recordedAudioUrl) URL.revokeObjectURL(this.recordedAudioUrl);
+                this.recordedAudioBlob = file;
+                this.recordedAudioUrl = URL.createObjectURL(file);
+
+                document.getElementById('audio-source-label').innerText = "Uploaded Audio File: " + file.name;
+                document.getElementById('audio-preview-element').src = this.recordedAudioUrl;
+                document.getElementById('voice-preview-container').classList.remove('hidden');
+                this.inspectAudioDuration(this.recordedAudioUrl);
+
+                const cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+                const tagInput = document.getElementById('voice-tags');
+                if (tagInput && !tagInput.value) {
+                    tagInput.value = cleanName;
+                }
+            }
+
+            async handleVideoVoiceUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const maxBytes = 60 * 1024 * 1024;
+                if (file.size > maxBytes) {
+                    alert("Video file 60 MB se badi hai. 60 MB se chhoti video chunein.");
+                    event.target.value = "";
+                    return;
+                }
+
+                const labelEl = document.getElementById('audio-source-label');
+                const previewBox = document.getElementById('voice-preview-container');
+                previewBox.classList.remove('hidden');
+                labelEl.innerText = "⏳ Video se awaaz nikali ja rahi hai: " + file.name + "...";
+
+                try {
+                    const arrayBuf = await file.arrayBuffer();
+                    const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const audioBuffer = await tempCtx.decodeAudioData(arrayBuf);
+                    await tempCtx.close();
+
+                    const wavBlob = this.audioBufferToWavBlob(audioBuffer);
+                    if (this.recordedAudioUrl) URL.revokeObjectURL(this.recordedAudioUrl);
+                    this.recordedAudioBlob = wavBlob;
+                    this.recordedAudioUrl = URL.createObjectURL(wavBlob);
+
+                    labelEl.innerText = "🎬 Video Voice Extracted: " + file.name;
+                    document.getElementById('audio-preview-element').src = this.recordedAudioUrl;
+                    this.inspectAudioDuration(this.recordedAudioUrl);
+
+                    const cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+                    const tagInput = document.getElementById('voice-tags');
+                    if (tagInput && !tagInput.value) {
+                        tagInput.value = cleanName;
+                    }
+                } catch (err) {
+                    console.error("Audio decode error:", err);
+                    if (this.recordedAudioUrl) URL.revokeObjectURL(this.recordedAudioUrl);
+                    this.recordedAudioBlob = file;
+                    this.recordedAudioUrl = URL.createObjectURL(file);
+                    labelEl.innerText = "🎬 Video Audio Loaded: " + file.name;
+                    document.getElementById('audio-preview-element').src = this.recordedAudioUrl;
+                    this.inspectAudioDuration(this.recordedAudioUrl);
+                }
+            }
+
+            audioBufferToWavBlob(buffer) {
+                const maxSamples = Math.min(buffer.length, Math.floor(buffer.sampleRate * 59));
+                const numChannels = Math.min(buffer.numberOfChannels, 2);
+                const sampleRate = buffer.sampleRate;
+                const bytesPerSample = 2;
+                const blockAlign = numChannels * bytesPerSample;
+                const dataSize = maxSamples * blockAlign;
+                const arrayBuffer = new ArrayBuffer(44 + dataSize);
+                const view = new DataView(arrayBuffer);
+
+                const writeStr = (offset, str) => { for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i)); };
+                writeStr(0, 'RIFF');
+                view.setUint32(4, 36 + dataSize, true);
+                writeStr(8, 'WAVE');
+                writeStr(12, 'fmt ');
+                view.setUint32(16, 16, true);
+                view.setUint16(20, 1, true);
+                view.setUint16(22, numChannels, true);
+                view.setUint32(24, sampleRate, true);
+                view.setUint32(28, sampleRate * blockAlign, true);
+                view.setUint16(32, blockAlign, true);
+                view.setUint16(34, 16, true);
+                writeStr(36, 'data');
+                view.setUint32(40, dataSize, true);
+
+                let offset = 44;
+                const channels = [];
+                for (let c = 0; c < numChannels; c++) channels.push(buffer.getChannelData(c));
+                for (let i = 0; i < maxSamples; i++) {
+                    for (let c = 0; c < numChannels; c++) {
+                        let s = Math.max(-1, Math.min(1, channels[c][i]));
+                        view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+                        offset += 2;
+                    }
+                }
+                return new Blob([arrayBuffer], { type: 'audio/wav' });
+            }
+
+            handleCustomMediaUpload(event) {
+                const files = Array.from(event.target.files || []);
+                if (!files.length) return;
+                const MAX_ITEMS = 20;
+                let skipped = 0;
+                files.forEach(file => {
+                    if (this.customMediaItems.length >= MAX_ITEMS) { skipped++; return; }
+                    if (file.size > 50 * 1024 * 1024) { skipped++; return; }
+                    const url = URL.createObjectURL(file);
+                    if (file.type.startsWith('video/')) {
+                        const vid = document.createElement('video');
+                        vid.src = url;
+                        vid.muted = true;
+                        vid.loop = false;
+                        vid.playsInline = true;
+                        vid.preload = 'auto';
+                        vid.addEventListener('loadedmetadata', () => { if (typeof ext !== 'undefined') ext.renderMediaThumbs(); });
+                        this.customMediaItems.push({ type: 'video', el: vid, url: url, name: file.name });
+                    } else if (file.type.startsWith('image/')) {
+                        const img = new Image();
+                        img.src = url;
+                        this.customMediaItems.push({ type: 'image', el: img, url: url, name: file.name });
+                    } else {
+                        URL.revokeObjectURL(url);
+                    }
+                });
+                event.target.value = '';
+                if (skipped) alert('Max 20 files aur har file 50MB se chhoti honi chahiye. ' + skipped + ' file chhod di gayi.');
+                ext.renderMediaThumbs();
+            }
+
+            removeCustomMedia(idx) {
+                const item = this.customMediaItems[idx];
+                if (!item) return;
+                if (item.url) URL.revokeObjectURL(item.url);
+                this.customMediaItems.splice(idx, 1);
+                ext.renderMediaThumbs();
+            }
+
+            clearCustomMedia(refreshPreview = true) {
+                this.customMediaItems.forEach(item => {
+                    if (item.url) URL.revokeObjectURL(item.url);
+                });
+                this.customMediaItems = [];
+                const input = document.getElementById('custom-bg-media');
+                if (input) input.value = '';
+                if (refreshPreview && typeof ext !== 'undefined') ext.renderMediaThumbs();
+            }
+
+            async toggleRecording() {
+                if (!this.isRecording) {
+                    try {
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: { noiseSuppression: !(typeof ext !== 'undefined' && ext.ai.on), echoCancellation: true, autoGainControl: false } });
+                        this.startRecording(stream);
+                    } catch (err) { alert("Microphone permission denied."); }
+                } else {
+                    this.stopRecording();
+                }
+            }
+
+            startRecording(stream) {
+                this.audioChunks = [];
+                this.transcribedText = "";
+                this.mediaRecorder = new MediaRecorder(stream);
+                this.mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) this.audioChunks.push(e.data); };
+                this.mediaRecorder.onstop = () => {
+                    if (this.recordedAudioUrl) URL.revokeObjectURL(this.recordedAudioUrl);
+                    this.recordedAudioBlob = new Blob(this.audioChunks, { type: this.mediaRecorder.mimeType || 'audio/webm' });
+                    this.recordedAudioUrl = URL.createObjectURL(this.recordedAudioBlob);
+                    document.getElementById('audio-source-label').innerText = `Mic Recorded Audio (${this.recordSeconds}s)`;
+                    document.getElementById('audio-preview-element').src = this.recordedAudioUrl;
+                    document.getElementById('voice-preview-container').classList.remove('hidden');
+                    this.inspectAudioDuration(this.recordedAudioUrl);
+                };
+
+                this.mediaRecorder.start();
+                if (this.speechRecognition) { try { this.speechRecognition.start(); } catch (e) {} }
+                this.isRecording = true;
+
+                document.getElementById('record-icon').className = "fa-solid fa-square";
+                document.getElementById('record-status').innerText = "Recording Mic... Tap Stop";
+                document.getElementById('mic-pulse').classList.remove('hidden');
+
+                this.recordSeconds = 0;
+                this.recordTimerInterval = setInterval(() => {
+                    this.recordSeconds++;
+                    const secs = this.recordSeconds < 10 ? '0' + this.recordSeconds : this.recordSeconds;
+                    document.getElementById('record-timer').innerText = `00:${secs} / 00:59`;
+                    if (this.recordSeconds >= this.maxRecordSeconds) this.stopRecording();
+                }, 1000);
+            }
+
+            stopRecording() {
+                if (this.mediaRecorder && this.isRecording) {
+                    this.mediaRecorder.stop();
+                    this.mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                }
+                if (this.speechRecognition) { try { this.speechRecognition.stop(); } catch (e) {} }
+                this.isRecording = false;
+                clearInterval(this.recordTimerInterval);
+                document.getElementById('record-icon').className = "fa-solid fa-microphone";
+                document.getElementById('record-status').innerText = `Mic Recording Complete (${this.recordSeconds}s)!`;
+                document.getElementById('mic-pulse').classList.add('hidden');
+            }
+
+            clearVoiceRecording() {
+                if (this.recordedAudioUrl) URL.revokeObjectURL(this.recordedAudioUrl);
+                this.recordedAudioBlob = null;
+                this.recordedAudioUrl = null;
+                this.transcribedText = "";
+                this.recordSeconds = 0;
+                this.detectedAudioDuration = 0;
+                document.getElementById('local-audio-file').value = "";
+                const vidIn = document.getElementById('local-video-voice-file');
+                if (vidIn) vidIn.value = "";
+                document.getElementById('voice-tags').value = "";
+                document.getElementById('voice-preview-container').classList.add('hidden');
+                document.getElementById('duration-notice-banner')?.classList.add('hidden');
+                document.getElementById('record-status').innerText = "Tap to Start Mic Record";
+                document.getElementById('record-timer').innerText = "00:00 / 00:59";
+            }
+
+            async prepareMedia() {
+                // wait until every photo/video is decoded; drop broken files
+                const waits = this.customMediaItems.map(item => new Promise(res => {
+                    if (item.type === 'image') {
+                        const done = () => res();
+                        if (item.el.complete) return done();
+                        item.el.onload = done; item.el.onerror = done;
+                    } else {
+                        if (item.el.readyState >= 2) return res();
+                        item.el.onloadeddata = () => res();
+                        item.el.onerror = () => res();
+                        setTimeout(res, 8000);
+                    }
+                }));
+                await Promise.all(waits);
+                this.customMediaItems = this.customMediaItems.filter(item => {
+                    const ok = item.type === 'image' ? item.el.naturalWidth > 0 : item.el.videoWidth > 0;
+                    if (!ok && item.url) URL.revokeObjectURL(item.url);
+                    return ok;
+                });
+                this.mediaSegs = this.customMediaItems.map(item => {
+                    let dur = 3;
+                    if (item.type === 'video') {
+                        const d = item.el.duration;
+                        dur = (isFinite(d) && d > 0.2) ? Math.min(d, 59) : 3;
+                    }
+                    return { item: item, dur: dur };
+                });
+                this.cycleLen = this.mediaSegs.reduce((a, sg) => a + sg.dur, 0);
+                const tag = document.getElementById('detected-mood-tag');
+                if (tag) tag.innerText = this.customMediaItems.length + ' photo/video (loop)';
+                return this.customMediaItems.length;
+            }
+
+            buildCinematicAudioChain(sourceNode, audioCtx, destinationNode) {
+                const real = (typeof ext !== 'undefined' && ext.mode === 'real');
+                const bassGain = real ? 0 : parseFloat(document.getElementById('slider-bass').value);
+                const reverbAmount = real ? 0 : parseFloat(document.getElementById('slider-reverb').value) / 100;
+
+                const bassFilter = audioCtx.createBiquadFilter();
+                bassFilter.type = "lowshelf";
+                bassFilter.frequency.value = 120;
+                bassFilter.gain.value = bassGain;
+
+                const compressor = audioCtx.createDynamicsCompressor();
+                compressor.threshold.value = real ? -18 : -22; compressor.knee.value = 30; compressor.ratio.value = real ? 2.5 : 4; compressor.attack.value = 0.005; compressor.release.value = 0.25;
+
+                let head = sourceNode;
+                {
+                    const hp = audioCtx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 80; hp.Q.value = 0.7;
+                    const lp = audioCtx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 9000;
+                    head.connect(hp); hp.connect(lp); head = lp;
+                }
+                const preGain = audioCtx.createGain();
+                preGain.gain.value = real ? 0.9 : Math.pow(10, -(bassGain * 0.6) / 20) * 0.9;
+                head.connect(preGain);
+                preGain.connect(bassFilter);
+                bassFilter.connect(compressor);
+
+                this.analyser = audioCtx.createAnalyser();
+                this.analyser.fftSize = 64;
+                this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+
+                compressor.connect(this.analyser);
+                if (!real && reverbAmount > 0) {
+                    const conv = audioCtx.createConvolver();
+                    conv.buffer = ext.makeImpulse(audioCtx, 1.3, 3);
+                    const wet = audioCtx.createGain(); wet.gain.value = reverbAmount * 0.4;
+                    compressor.connect(conv); conv.connect(wet); wet.connect(this.analyser);
+                }
+                const limiter = audioCtx.createDynamicsCompressor();
+                limiter.threshold.value = -4; limiter.knee.value = 6; limiter.ratio.value = 12;
+                limiter.attack.value = 0.001; limiter.release.value = 0.12;
+                const masterGain = audioCtx.createGain(); masterGain.gain.value = 0.85;
+                this.analyser.connect(limiter);
+                limiter.connect(masterGain);
+                masterGain.connect(destinationNode);
+                masterGain.connect(audioCtx.destination);
+            }
+
+            async startVideoGeneration() {
+                if (!this.recordedAudioBlob) return alert("Please record microphone audio, upload an audio file, or extract audio from a video first.");
+                if (!this.customMediaItems.length) return alert("Pehle kam se kam 1 photo ya video jodein (Select Photos / Videos). Wahi video ke background me chalegi.");
+                const voiceTags = document.getElementById('voice-tags').value.trim();
+                const scriptText = voiceTags ? voiceTags : (this.transcribedText || "Voice Story & Deep Poetry");
+
+                if (window.__cvBusy) return;
+                window.__cvBusy = true;
+                const genBtn = document.getElementById('generate-btn');
+                if (genBtn) genBtn.disabled = true;
+                window.cinevoiceTrack && window.cinevoiceTrack('video_generate_start', { voice_mode: (typeof ext !== 'undefined' && ext.mode) || 'feature' });
+
+                document.getElementById('input-section').classList.add('hidden');
+                document.getElementById('processing-section').classList.remove('hidden');
+
+                try {
+                    const readyCount = await this.prepareMedia();
+                    if (!readyCount) throw new Error('No usable photos/videos');
+                    await this.runProcessingSimulation();
+                    await this.compileVideoBlob(scriptText);
+                    window.cinevoiceTrack && window.cinevoiceTrack('video_generate_complete');
+                } catch (err) {
+                    console.error(err);
+                    window.cinevoiceTrack && window.cinevoiceTrack('video_generate_error');
+                    alert('Video banate waqt problem aayi. Page reload kiye bina dobara try karein.');
+                    document.getElementById('processing-section').classList.add('hidden');
+                    document.getElementById('input-section').classList.remove('hidden');
+                } finally {
+                    window.__cvBusy = false;
+                    if (genBtn) genBtn.disabled = false;
+                }
+            }
+
+            async runProcessingSimulation() {
+                const fill = document.getElementById('progress-bar-fill');
+                const statusText = document.getElementById('processing-status-text');
+                const steps = [
+                    { percent: '25%', text: 'Preparing audio & photos...', id: 'step-1' },
+                    { percent: '50%', text: 'Applying Bass Boost & Studio Reverb DSP...', id: 'step-2' },
+                    { percent: '75%', text: 'Stitching your photos (3s slide change)...', id: 'step-3' },
+                    { percent: '100%', text: 'Encoding video stream...', id: 'step-4' }
+                ];
+
+                for (let i = 0; i < steps.length; i++) {
+                    fill.style.width = steps[i].percent;
+                    statusText.innerText = steps[i].text;
+                    const stepEl = document.getElementById(steps[i].id);
+                    stepEl.classList.remove('opacity-40');
+                    stepEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> Done`;
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            }
+
+            drawMediaCover916(ctx, mediaEl, width, height, timeSec) {
+                const mw = mediaEl.videoWidth || mediaEl.naturalWidth || width;
+                const mh = mediaEl.videoHeight || mediaEl.naturalHeight || height;
+                if (!mw || !mh) return;
+
+                const targetRatio = width / height;
+                const mediaRatio = mw / mh;
+                let drawW, drawH;
+
+                if (mediaRatio > targetRatio) {
+                    drawH = height;
+                    drawW = height * mediaRatio;
+                } else {
+                    drawW = width;
+                    drawH = width / mediaRatio;
+                }
+
+                const isVid = (mediaEl.tagName === 'VIDEO');
+                const scale = isVid ? 1 : 1.04 + Math.sin(timeSec * 0.25) * 0.03;
+                const panY = isVid ? 0 : Math.sin(timeSec * 0.18) * 12;
+
+                ctx.save();
+                ctx.translate(width / 2, height / 2 + panY);
+                ctx.scale(scale, scale);
+                ctx.drawImage(mediaEl, -drawW / 2, -drawH / 2, drawW, drawH);
+                ctx.restore();
+            }
+
+            async compileVideoBlob(scriptText) {
+                this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (this.audioCtx.state === 'suspended') await this.audioCtx.resume();
+                
+                let audioDestination = this.audioCtx.createMediaStreamDestination();
+                const pitchDropPercent = (typeof ext !== 'undefined' && ext.mode === 'real') ? 0 : parseFloat(document.getElementById('slider-pitch').value);
+                const playbackRateVal = 1.0 - (pitchDropPercent / 100);
+
+                const arrayBuffer = await this.recordedAudioBlob.arrayBuffer();
+                let audioBuffer = await this.audioCtx.decodeAudioData(arrayBuffer);
+                if (typeof ext !== 'undefined' && ext.ai.on) {
+                    try {
+                        const st = document.getElementById('processing-status-text');
+                        if (st) st.textContent = 'AI noise remover chal raha hai (up to 59s)...';
+                        audioBuffer = await ext.aiClean(audioBuffer);
+                        window.cinevoiceTrack && window.cinevoiceTrack('ai_denoise_applied');
+                    } catch (aiErr) {
+                        console.warn('AI noise remover skipped:', aiErr);
+                        window.cinevoiceTrack && window.cinevoiceTrack('ai_denoise_fallback');
+                        const n = document.getElementById('ai-note');
+                        if (n) { n.textContent = 'AI Noise Remover is device par nahi chal paya, isliye normal noise cleaning use hui.'; n.classList.remove('hidden'); }
+                    }
+                }
+                ext.gate(audioBuffer);
+                
+                const audioSourceNode = this.audioCtx.createBufferSource();
+                audioSourceNode.buffer = audioBuffer;
+                audioSourceNode.playbackRate.value = playbackRateVal;
+                
+                this.buildCinematicAudioChain(audioSourceNode, this.audioCtx, audioDestination);
+
+                this._segKey = null; this._segItem = null; this._everDrew = false;
+                this.customMediaItems.forEach(item => {
+                    if (item.type === 'video' && item.el) { try { item.el.pause(); item.el.currentTime = 0; } catch (e) {} }
+                });
+
+                const canvasStream = this.canvas.captureStream(30);
+                const combinedStream = new MediaStream([...canvasStream.getVideoTracks(), ...audioDestination.stream.getAudioTracks()]);
+
+                const fmtMime = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4;codecs=avc1,mp4a.40.2','video/mp4',
+                                 'video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm']
+                                .find(m => window.MediaRecorder && MediaRecorder.isTypeSupported(m));
+                let recorderOptions = { videoBitsPerSecond: 5000000, audioBitsPerSecond: 160000 };
+                if (fmtMime) recorderOptions.mimeType = fmtMime;
+                let videoRecorder;
+                try { videoRecorder = new MediaRecorder(combinedStream, recorderOptions); }
+                catch (recErr) { videoRecorder = new MediaRecorder(combinedStream); }
+                this.videoExt = ((videoRecorder.mimeType || fmtMime || '').indexOf('mp4') !== -1) ? 'mp4' : 'webm';
+                const videoChunks = [];
+                videoRecorder.ondataavailable = (e) => { if (e.data.size > 0) videoChunks.push(e.data); };
+
+                const recordingPromise = new Promise((resolve) => {
+                    videoRecorder.onstop = () => {
+                        const blob = new Blob(videoChunks, { type: videoRecorder.mimeType || 'video/webm' });
+                        resolve(blob);
+                    };
+                });
+
+                const rawDurationMs = (audioBuffer.duration / playbackRateVal) * 1000;
+                const durationMs = Math.min(Math.max(rawDurationMs, 1000), 59000);
+                const totalSecDisplay = (durationMs / 1000).toFixed(1);
+
+                videoRecorder.start();
+                audioSourceNode.start(0);
+
+                const startTime = performance.now();
+                const statusEl = document.getElementById('processing-status-text');
+
+                const renderLoop = (now) => {
+                    const elapsed = now - startTime;
+                    if (statusEl) {
+                        statusEl.textContent = `Rendering Video: ${(elapsed / 1000).toFixed(1)}s / ${totalSecDisplay}s`;
+                    }
+                    this.drawCanvasFrame(elapsed / 1000, scriptText, durationMs / 1000);
+                    if (elapsed < durationMs) {
+                        this.canvasAnimationFrame = requestAnimationFrame(renderLoop);
+                    } else {
+                        cancelAnimationFrame(this.canvasAnimationFrame);
+                        try { audioSourceNode.stop(); } catch (e) {}
+                        this.customMediaItems.forEach(item => {
+                            if (item.type === 'video' && item.el) item.el.pause();
+                        });
+                        if (videoRecorder.state !== 'inactive') videoRecorder.stop();
+                    }
+                };
+
+                this.canvasAnimationFrame = requestAnimationFrame(renderLoop);
+                this.generatedVideoBlob = await recordingPromise;
+                this.generatedVideoUrl = URL.createObjectURL(this.generatedVideoBlob);
+                const fmtLabel = (this.videoExt || 'webm').toUpperCase();
+                const expEl = document.getElementById('export-format-text'); if (expEl) expEl.textContent = `Your 9:16 vertical video (${totalSecDisplay}s • 720×1280) is ready. Format: ${fmtLabel}.`;
+                const dlEl = document.getElementById('download-label'); if (dlEl) dlEl.textContent = 'Download Video (' + fmtLabel + ')';
+
+                document.getElementById('processing-section').classList.add('hidden');
+                document.getElementById('output-section').classList.remove('hidden');
+
+                const player = document.getElementById('final-video-player');
+                const captionBox = document.getElementById('share-caption');
+                if (captionBox) captionBox.value = this.buildShareCaption(scriptText);
+                player.src = this.generatedVideoUrl;
+                player.play().catch(e => console.log("Autoplay deferred:", e));
+            }
+
+            drawCanvasFrame(timeSec, text, totalDurationSec = 18) {
+                const width = this.canvas.width;
+                const height = this.canvas.height;
+                let drewBackground = false;
+                const segs = this.mediaSegs || [];
+                if (segs.length && this.cycleLen > 0) {
+                    const t = timeSec % this.cycleLen;
+                    let idx = 0, segStart = 0, acc = 0;
+                    for (let i = 0; i < segs.length; i++) {
+                        idx = i; segStart = acc;
+                        if (t < acc + segs[i].dur) break;
+                        acc += segs[i].dur;
+                    }
+                    const seg = segs[idx];
+                    const local = Math.max(0, t - segStart);
+                    const key = Math.floor(timeSec / this.cycleLen) + ':' + idx;
+                    if (this._segKey !== key) {
+                        if (this._segItem && this._segItem.type === 'video') { try { this._segItem.el.pause(); } catch (e) {} }
+                        this._segKey = key;
+                        this._segItem = seg.item;
+                        if (seg.item.type === 'video') {
+                            try { seg.item.el.currentTime = 0; seg.item.el.play().catch(() => {}); } catch (e) {}
+                        }
+                    }
+                    const el = seg.item.el;
+                    const ready = seg.item.type === 'video' ? el.readyState >= 2 : el.complete;
+                    if (ready) {
+                        this.drawMediaCover916(this.ctx, el, width, height, local);
+                        drewBackground = true;
+                        this._everDrew = true;
+                    }
+                }
+
+                if (!drewBackground && !this._everDrew) {
+                    let grad = this.ctx.createLinearGradient(0, 0, width, height);
+                    grad.addColorStop(0, '#0f172a'); grad.addColorStop(1, '#020617');
+                    this.ctx.fillStyle = grad; this.ctx.fillRect(0, 0, width, height);
+                }
+            }
+
+            wrapText(context, text, x, y, maxWidth, lineHeight) {
+                const words = text.split(' ');
+                let line = '', lines = [];
+                for (let n = 0; n < words.length; n++) {
+                    let testLine = line + words[n] + ' ';
+                    if (context.measureText(testLine).width > maxWidth && n > 0) {
+                        lines.push(line); line = words[n] + ' ';
+                    } else { line = testLine; }
+                }
+                lines.push(line);
+                let startY = y - ((lines.length - 1) * lineHeight) / 2;
+                for (let k = 0; k < lines.length; k++) {
+                    context.fillText(lines[k], x, startY + (k * lineHeight));
+                }
+            }
+
+            downloadVideo() {
+                if (!this.generatedVideoUrl) return;
+                window.cinevoiceTrack && window.cinevoiceTrack('video_download');
+                const a = document.createElement('a');
+                a.href = this.generatedVideoUrl;
+                a.download = `cinevoice_deep_video_${Date.now()}.${this.videoExt || 'webm'}`;
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            }
+
+            resetToHome() {
+                if (this.canvasAnimationFrame) cancelAnimationFrame(this.canvasAnimationFrame);
+                if (this.isRecording) this.stopRecording();
+
+                this.clearVoiceRecording();
+                if (this.generatedVideoUrl) URL.revokeObjectURL(this.generatedVideoUrl);
+                if (this.recordedAudioUrl) URL.revokeObjectURL(this.recordedAudioUrl);
+                this.generatedVideoBlob = null; this.generatedVideoUrl = null;
+
+                document.getElementById('input-section').classList.remove('hidden');
+                document.getElementById('processing-section').classList.add('hidden');
+                document.getElementById('output-section').classList.add('hidden');
+
+                for (let i = 1; i <= 4; i++) {
+                    const stepEl = document.getElementById(`step-${i}`);
+                    stepEl.classList.add('opacity-40');
+                    stepEl.innerHTML = `<i class="fa-regular fa-circle text-slate-500"></i> Step ${i}`;
+                }
+                document.getElementById('progress-bar-fill').style.width = '0%';
+            }
+        }
+
+        let app = null;
+        window.addEventListener('DOMContentLoaded', () => {
+            app = new CineVoiceDeepApp();
+        });
+    </script>
+
+    <script>
+    const ext = {
+     brand: 'CineVoice Deep AI',
+     mode: 'feature',
+     makeImpulse(ctx,sec,decay){ const n=Math.floor(ctx.sampleRate*sec), b=ctx.createBuffer(2,n,ctx.sampleRate);
+      for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/n,decay);} return b; },
+     ai:{on:true,x:null},
+     setAI(v){ this.ai.on=!!v; const n=document.getElementById('ai-note'); if(n){n.classList.add('hidden');n.textContent='';}
+      window.cinevoiceTrack && window.cinevoiceTrack('ai_denoise_toggle',{enabled:this.ai.on}); },
+     async aiLoad(){
+      if(this.ai.x) return this.ai.x;
+      const url='https://cdn.jsdelivr.net/npm/@sapphi-red/web-noise-suppressor@0.4.1/dist/rnnoise.wasm';
+      const bytes=await (await fetch(url)).arrayBuffer(); let mem;
+      const {instance}=await WebAssembly.instantiate(bytes,{env:{
+       emscripten_memcpy_big:(d,s,n)=>new Uint8Array(mem.buffer).copyWithin(d,s,s+n),
+       emscripten_resize_heap:()=>0, __assert_fail:()=>{throw new Error('wasm assert')}}});
+      const x=instance.exports; mem=x.memory; if(x.__wasm_call_ctors) x.__wasm_call_ctors();
+      this.ai.x=x; return x;
+     },
+     async aiClean(buf){
+      const x=await this.aiLoad(), SR=48000, FS=480;
+      const len=Math.ceil(Math.min(buf.duration,59)*SR);
+      const off=new OfflineAudioContext(buf.numberOfChannels,len,SR);
+      const src=off.createBufferSource(); src.buffer=buf; src.connect(off.destination); src.start();
+      const rs=await off.startRendering();
+      const out=new AudioBuffer({length:rs.length,numberOfChannels:rs.numberOfChannels,sampleRate:SR});
+      for(let c=0;c<rs.numberOfChannels;c++){
+       const data=rs.getChannelData(c), o=out.getChannelData(c);
+       const st=x.rnnoise_create(0), pin=x.malloc(FS*4), pout=x.malloc(FS*4);
+       if(!st||!pin||!pout) throw new Error('alloc failed');
+       const t0=performance.now(); let fr=0;
+       try{
+        for(let i=0;i<data.length;i+=FS,fr++){
+         let h=new Float32Array(x.memory.buffer);
+         for(let j=0;j<FS;j++) h[pin/4+j]=(data[i+j]||0)*32768;
+         x.rnnoise_process_frame(st,pout,pin);
+         h=new Float32Array(x.memory.buffer);
+         for(let j=0;j<FS&&i+j<data.length;j++){ const v=0.9*(h[pout/4+j]/32768)+0.1*data[i+j]; o[i+j]=v>1?1:(v<-1?-1:v); }
+         if(fr===20 && (performance.now()-t0)/21>15) throw new Error('AI too slow on this device');
+         if(fr%100===99) await new Promise(r=>setTimeout(r));
+        }
+       } finally { x.rnnoise_destroy(st); x.free(pin); x.free(pout); }
+      }
+      return out;
+     },
+     setVoiceMode(m){
+      this.mode = (m === 'real') ? 'real' : 'feature';
+      const on='block text-left p-3 rounded-xl border bg-violet-600 text-white border-violet-500 transition-colors';
+      const off='block text-left p-3 rounded-xl border bg-slate-900 text-slate-300 border-slate-700 transition-colors';
+      document.getElementById('mode-feature').className = (this.mode==='feature') ? on : off;
+      document.getElementById('mode-real').className = (this.mode==='real') ? on : off;
+      ['fx-voice-style','fx-situation','fx-sliders'].forEach(id=>{
+       const el=document.getElementById(id); if(!el) return;
+       el.style.opacity = (this.mode==='real') ? '0.35' : '';
+       el.style.pointerEvents = (this.mode==='real') ? 'none' : '';
+      });
+      document.querySelectorAll('#fx-sliders input[type=range]').forEach(r=>{ r.disabled = (this.mode==='real'); });
+      window.cinevoiceTrack && window.cinevoiceTrack('voice_mode_select', { voice_mode: this.mode });
+     },
+     mark(x){
+      x.save(); x.globalAlpha=0.8; x.shadowBlur=0; x.textAlign='left'; x.textBaseline='middle'; x.font='600 22px Inter, sans-serif';
+      const tw=x.measureText(this.brand).width, px=34, py=60, ph=38, pw=tw+54;
+      x.fillStyle='rgba(0,0,0,0.32)'; x.beginPath(); x.roundRect(px,py,pw,ph,19); x.fill();
+      x.fillStyle='#a78bfa'; x.beginPath(); x.arc(px+19,py+ph/2,6,0,Math.PI*2); x.fill();
+      x.fillStyle='rgba(255,255,255,0.92)'; x.fillText(this.brand,px+34,py+ph/2+1); x.restore();
+     },
+     sit: {
+      shayari:['Shayari / Sad',8,6,40,'gehri awaaz, halki gunj'],
+      love:['Love',5,2,35,'warm aur narm awaaz'],
+      motivation:['Motivation',10,7,20,'bhaari, damdaar awaaz'],
+      morning:['Good morning',3,-3,15,'taazi aur halki awaaz'],
+      sleep:['Good night / ASMR',2,-2,55,'dheemi, sukoon bhari awaaz'],
+      wish:['Birthday / Wishes',4,-5,20,'sweet aur khush awaaz'],
+      rj:['RJ / Podcast',6,0,10,'saaf, natural awaaz']
+     },
+     situation(k,btn){
+      const [n,b,p,r,d]=this.sit[k];
+      const set=(id,v,lab,fmt)=>{document.getElementById(id).value=v;document.getElementById(lab).innerText=fmt(v)};
+      set('slider-bass',b,'val-bass',v=>'+'+v+' dB');
+      set('slider-pitch',p,'val-pitch',v=>(0<v?'-':'+')+Math.abs(v)+'%');
+      set('slider-reverb',r,'val-reverb',v=>v+'%');
+      document.querySelectorAll('#situation-chips .chip').forEach(c=>c.classList.remove('on'));
+      if(btn)btn.classList.add('on');
+      document.getElementById('situation-note').textContent='✅ '+n+' ke liye best: '+d;
+      this.hints();
+     },
+     hints(){
+      const v=id=>parseFloat(document.getElementById(id).value), b=v('slider-bass'), p=v('slider-pitch'), r=v('slider-reverb');
+      const t=(x,a)=>a.find(z=>x<=z[0])[1], set=(k,x)=>document.getElementById('hint-'+k).textContent='👉 '+x;
+      set('bass',t(b,[[2,'Sweet voice ke liye achhi'],[6,'Natural aur saaf awaaz'],[10,'Gehri awaaz, shayari ke liye best'],[15,'Filmi bhaari awaaz']]));
+      set('pitch',t(p,[[-8,'Cartoon jaisi awaaz'],[-3,'Sweet aur soft awaaz'],[2,'Natural awaaz'],[7,'Thodi gehri shayari style'],[12,'Bahut bhaari awaaz']]));
+      set('reverb',t(r,[[10,'Bilkul saaf (RJ style)'],[35,'Halka studio feel'],[55,'Hall jaisi gunj'],[70,'Bahut zyada echo']]));
+     },
+     gate(buf){
+       const win=Math.max(256,Math.floor(buf.sampleRate*0.02));
+       for(let c=0;c<buf.numberOfChannels;c++){
+        const d=buf.getChannelData(c), n=Math.floor(d.length/win), r=[];
+        for(let i=0;i<n;i++){let e=0;for(let j=0;j<win;j++){const v=d[i*win+j];e+=v*v}r.push(Math.sqrt(e/win))}
+        if(n<10)continue;
+        const sorted=[...r].sort((a,b)=>a-b);
+        const floor=sorted[Math.floor(n*0.15)], speech=sorted[Math.floor(n*0.92)];
+        const thr=Math.max(floor*3, speech*0.25, 0.004), lo=thr*0.4;
+        const on=new Array(n).fill(false); let st=false;
+        for(let i=0;i<n;i++){ if(r[i]>=thr) st=true; else if(r[i]<lo) st=false; on[i]=st; }
+        const LA=8, HOLD=14, open=new Array(n).fill(false);
+        for(let i=0;i<n;i++) if(on[i]) for(let k=Math.max(0,i-LA);k<=Math.min(n-1,i+HOLD);k++) open[k]=true;
+        let g=1;
+        for(let i=0;i<n;i++){
+         const t=open[i]?1:0.03, ng=g+(t-g)*(t<g?0.35:0.9);
+         for(let j=0;j<win;j++) d[i*win+j]*=g+(ng-g)*(j/win);
+         g=ng;
+        }
+       }
+      },
+     styles:{sweet:[3,-5,25],rj:[5,0,15],whisper:[0,-3,35],deep:[7,8,25]},
+     voiceStyle(k,btn){
+      const [b,p,r]=this.styles[k];
+      const set=(id,v,lab,fmt)=>{const e=document.getElementById(id);e.value=v;document.getElementById(lab).innerText=fmt(v)};
+      set('slider-bass',b,'val-bass',v=>'+'+v+' dB');
+      set('slider-pitch',p,'val-pitch',v=>(v>0?'-':'+')+Math.abs(v)+'%');
+      set('slider-reverb',r,'val-reverb',v=>v+'%');
+      document.querySelectorAll('#voice-styles .chip').forEach(c=>c.classList.remove('on'));
+      btn.classList.add('on');this.hints();
+     },
+     lines:{
+      morning:['Subah ki pehli chai aur ek nayi shuruaat, bas yahi sukoon hai.'],
+      night:['Aaj ki thakaan ko takiye pe chhod do, kal ek nayi subah hai.'],
+      selflove:['Main khud ke liye kaafi hu, aur ye kehna bhi ek himmat hai.'],
+      friend:['Dost wo nahi jo hasaye, dost wo hai jiske saath ro bhi sako.'],
+      birthday:['Naya saal, nayi umeed, tumhari har dua qubool ho.'],
+      wedding:['Do dil, ek safar, aur ek khoobsurat shuruaat.'],
+      bhaidooj:['Bhai ka pyaar bina kehe samajh aata hai.']
+     },
+     occasion(k){
+      const a=this.lines[k]; document.getElementById('voice-tags').value=a[Math.floor(Math.random()*a.length)];
+      this.situation({morning:'morning',night:'sleep',selflove:'love',friend:'rj',birthday:'wish',wedding:'wish',bhaidooj:'love'}[k]);
+      document.getElementById('voice-recording-area').scrollIntoView({behavior:'smooth',block:'center'});
+     },
+
+     poemDb: {
+      birthday: [
+       "Janamdin ki dher saari shubhkaamnayein, tumhari zindagi khushiyon se hamesha bhari rahe.",
+       "Har saal ye din aaye, aur tumhari har ek khwahish poori ho jaye.",
+       "Tum jiyo hazaro saal, saal ke din ho pachaas hazaar, Happy Birthday!",
+       "Khuda se bas yahi dua hai ki tumhara har naya din pehle se behtar ho.",
+       "Muskurate raho aise hi hamesha, tumhara yeh janamdin sabse khaas ho."
+      ],
+      trending: [
+       "Aajkal ke daur me khud ko sabse upar rakhna hi sabse bada success hai.",
+       "Jo log pehle piche haste the, aaj wo status dekh kar status poochhte hain.",
+       "Waqt badal raha hai, aur waqt ke sath humne bhi jeena sikh liya hai.",
+       "Bheed me chalne wale kahan yaad rehte hain, pehchaan khud banani padti hai.",
+       "Royal attitude aur clear dil, bas yahi aaj ki trending pehchaan hai."
+      ],
+      love: [
+       "Love ek aisi khamosh chahat hai, jo bina kahe bhi har dhadkan me gunjti hai.",
+       "Kuch log dil ke itne paas hote hain, ki door reh kar bhi har pal saath rehte hain.",
+       "Mohabbat me shart nahi hoti, bas ek doosre ki khushi ki chahat hoti hai.",
+       "Aapki ek muskaan mere din ki sabse khoobsurat shuruaat ban jaati hai.",
+       "Zindagi me pyaar ka matlab tumse milne ke baad hi samajh aaya hai."
+      ],
+      intezaar: [
+       "Intezaar ki ghadiyan jitni gehri hoti hain, milne ka sukoon utna hi meetha hota hai.",
+       "Waqt ke saath har cheez badal jaati hai, par tera intezaar aaj bhi wahi hai.",
+       "Har sham ye dil bas yahi poochhta hai, ki kab hoga wo pal jab hum sath honge.",
+       "Khamosh raste aur tera intezaar, zindagi ka sabse khoobsurat ehsaas hai.",
+       "Intezaar me jo maza hai, wo shayad mil jaane ke baad bhi nahi milta."
+      ],
+      dost: [
+       "Dost wo nahi jo sirf khushi me saath de, asli dost wo hai jo har gham baant le.",
+       "Teri meri dosti chai ki tarah hai, jitni puraani utni hi pakki aur mithi.",
+       "Zindagi ke har safar me ek saccha dost mil jaye, toh raasta aasaan ho jaata hai.",
+       "Kaanch ke khilone jaisi nahi hoti dosti, ye toh waqt ke saath aur gehri hoti hai.",
+       "Bina bole jo dil ki baat samajh le, wahi toh asli yaara hota hai."
+      ],
+      maa: [
+       "Maa ki duaon me wo taaqat hai, jo har musibat ko aasaan bana deti hai.",
+       "Duniya ki har khushi ek taraf, aur maa ke haath ka khana aur pyaar ek taraf.",
+       "Lafz kam pad jaate hain jab bhi maa ki mamta ka zikr hota hai.",
+       "Ghar laut kar jab maa muskura kar dekhe, toh din bhar ki thakaan door ho jaati hai.",
+       "Zindagi ki pehli ustad aur sabse sacchi dost sirf maa hoti hai."
+      ],
+      sapne: [
+       "Sapne wo nahi jo hum sote waqt dekhte hain, sapne wo hain jo humein sone na dein.",
+       "Apne sapnon par bharosa rakho, ek din tumhari mehnat rang zaroor layegi.",
+       "Manzil kitni bhi door kyu na ho, pehla kadam uthana hi sabse bada faisla hai.",
+       "Khwaabon ko haqeeqat me badalne ke liye har din naya junoon chahiye.",
+       "Mushkilon se mat daro, ye tumhare sapnon ko aur majboot banane aati hain."
+      ],
+      khamoshi: [
+       "Khamoshi bhi kabhi kabhi sabse gehri awaaz hoti hai, bas sunne wala chahiye.",
+       "Jab lafz kam pad jayein, toh khamoshi dil ka haal bayan kar deti hai.",
+       "Khamosh rehne ka matlab ye nahi ki jawaab nahi, bas waqt کا intezaar hai.",
+       "Raat ki khamoshi me ek alag hi sukoon hai, jo din ke shor me nahi milta.",
+       "Dil ki gehrayion me chhupi khamoshi hamesha sacchi hoti hai."
+      ],
+      yaadein: [
+       "Kuch yaadein baarish ki tarah hoti hain, aati hain aur sab bhigo jaati hain.",
+       "Puraane dino ki yaadein jab bhi aati hain, chehre par ek muskaan chhod jaati hain.",
+       "Waqt aage badh jata hai, par yaadein dil ke ek kone me hamesha taaza rehti hain.",
+       "Baarish ki boondien aur purani yaadein, dono hi dil ko sukoon deti hain.",
+       "Yaadon ka safar kabhi khatam nahi hota, ye har lamhe me saath chalti hain."
+      ],
+      dil: [
+       "Dil saaf rakho, waqt aur niyat ka hisaab kudrat khud kar deti hai.",
+       "Jo baat dil se nikalti hai, wo samne wale ke dil tak zaroor pahunchti hai.",
+       "Dil ki suno kyunki ye kabhi jhooth nahi bolta, baaki duniya toh dikawa karti hai.",
+       "Dil me jagah banane ke liye sirf sacchai aur meethe lafzon ki zarurat hoti hai.",
+       "Dhadkano ka ye silsila tabhi khoobsurat lagta hai jab dil me sukoon ho."
+      ]
+     },
+
+     quickKeyword(word){
+      document.getElementById('poem-word').value = word;
+      this.poems();
+     },
+
+     poems(isRefresh = false){
+      const wInput = (document.getElementById('poem-word').value || '').trim().toLowerCase();
+      let key = wInput || 'birthday';
+      
+      if(!this.poemDb[key]){
+       const allKeys = Object.keys(this.poemDb);
+       key = allKeys.find(k => key.includes(k)) || allKeys[Math.floor(Math.random() * allKeys.length)];
+      }
+
+      let lines = [...this.poemDb[key]];
+      if(isRefresh){ lines = lines.sort(() => 0.5 - Math.random()); }
+
+      const out = document.getElementById('poem-out');
+      out.innerHTML = '';
+      
+      lines.slice(0, 5).forEach((line, index) => {
+       const btn = document.createElement('button');
+       btn.type = 'button';
+       btn.className = 'chip text-left w-full p-2.5 bg-slate-900 hover:bg-slate-800 border-slate-800 text-xs text-slate-200 transition-all flex items-center gap-2';
+       btn.innerHTML = `<span class="text-violet-400 font-bold text-[11px]">${index+1}.</span> <span>"${line}"</span>`;
+       btn.onclick = () => {
+        document.getElementById('voice-tags').value = line;
+        document.getElementById('voice-recording-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+       };
+       out.appendChild(btn);
+      });
+     },
+
+     renderMediaThumbs(){
+      const box = document.getElementById('media-thumbs');
+      const badge = document.getElementById('media-count-badge');
+      const clr = document.getElementById('clear-custom-media-btn');
+      if(!box || typeof app === 'undefined' || !app) return;
+      const items = app.customMediaItems || [];
+      box.innerHTML = '';
+      if(badge){
+        badge.textContent = items.length ? (items.length + ' added') : '0 added';
+        badge.className = 'text-[10px] px-2 py-0.5 rounded border ' + (items.length ? 'text-emerald-300 bg-emerald-950/70 border-emerald-800/50' : 'text-amber-300 bg-amber-950/70 border-amber-800/50');
+      }
+      if(clr) clr.classList.toggle('hidden', items.length === 0);
+      items.forEach((item, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'relative aspect-[9/16] rounded-lg overflow-hidden border-2 border-emerald-500/80 bg-slate-950 shadow-md';
+        const media = document.createElement(item.type === 'video' ? 'video' : 'img');
+        media.src = item.url;
+        media.className = 'w-full h-full object-cover';
+        if(item.type === 'video'){ media.muted = true; media.playsInline = true; }
+        const tag = document.createElement('span');
+        tag.className = 'absolute top-1 left-1 text-[9px] bg-emerald-600/90 px-1.5 py-0.5 rounded text-white font-semibold';
+        tag.textContent = (item.type === 'video' ? '🎬 ' : '📸 ') + '#' + (idx + 1);
+        const time = document.createElement('span');
+        time.className = 'absolute bottom-1 left-1 text-[9px] bg-black/75 px-1 rounded text-emerald-300 font-mono';
+        time.textContent = item.type === 'video' ? (isFinite(item.el.duration) ? Math.round(item.el.duration) + 's' : '…') : '3s';
+        const del = document.createElement('button');
+        del.type = 'button';
+        del.className = 'absolute top-1 right-1 w-5 h-5 rounded-full bg-black/70 hover:bg-rose-600 text-white text-[10px] leading-none';
+        del.textContent = '✕';
+        del.onclick = () => app.removeCustomMedia(idx);
+        wrap.append(media, tag, time, del);
+        box.appendChild(wrap);
+      });
+     },
+
+     saveImage(){
+      const c=document.getElementById('render-canvas');
+      c.toBlob(b=>{if(!b)return;const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='cinevoice_wallpaper_'+Date.now()+'.png';a.click()});
+     },
+     streak(bump){
+      try{
+       const d=new Date().toDateString();let o=JSON.parse(localStorage.getItem('cv_streak')||'{"n":0,"d":""}');
+       if(bump&&o.d!==d){const y=new Date(Date.now()-864e5).toDateString();o.n=(o.d===y)?o.n+1:1;o.d=d;localStorage.setItem('cv_streak',JSON.stringify(o))}
+       document.getElementById('streak-badge').textContent='🔥 '+o.n+' day streak';
+      }catch(e){}
+     },
+    };
+
+    (function wait(){
+     if(typeof app==='undefined'||!app){return setTimeout(wait,100)}
+     ext.streak(false);
+     ['slider-bass','slider-pitch','slider-reverb'].forEach(i=>document.getElementById(i).addEventListener('input',()=>ext.hints()));
+     ext.hints();
+     ext.poems();
+     ext.renderMediaThumbs();
+
+     const tr=window.cinevoiceTrack;
+     window.cinevoiceTrack=function(e,p){if(e==='video_generate_complete')ext.streak(true);return tr&&tr(e,p)};
+    })();
+    </script>
+</body>
+</html>
